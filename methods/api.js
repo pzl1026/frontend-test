@@ -102,7 +102,6 @@ Function.prototype.myBind = function (context, ...args) {
       args.concat(Array.prototype.slice.call(arguments))
     );
   };
-  console.log(this, 'proro');
   fBound.prototype = Object.create(this);
   return fBound;
 };
@@ -126,13 +125,67 @@ function myNew(fn, ...args) {
 function myInstanceof(left, right) {
   let proto = Object.getPrototypeOf(left);
   while (true) {
-    if (proro == null) return false;
+    if (proto == null) return false;
     if (proto == right.prototype) return true;
     proto = Object.getPrototypeOf(proto);
   }
 }
 
+/**
+ * 单例模式
+ * @param {*} func
+ */
+function proxy(func) {
+  let instance;
+
+  let handler = {
+    construct(target, args) {
+      if (!instance) {
+        instance = Reflect.construct(func, args);
+      }
+      return instance;
+    },
+  };
+
+  return new Proxy(func, handler);
+}
+
+/**
+ * 事件防抖
+ * @param {*} fn
+ * @param {*} delay
+ */
+function deBounce(fn, delay) {
+  let timer = null;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, delay);
+  };
+}
+
+/**
+ * 事件节流
+ * @param {*} fn
+ * @param {*} delay
+ */
+function throttle(fn, delay = 500) {
+  let flag = true;
+  return (...args) => {
+    if (!flag) return;
+    flag = false;
+    setTimeout(() => {
+      fn.apply(this, args);
+      flag = true;
+    }, delay);
+  };
+}
+
 module.exports = {
   myNew,
   myInstanceof,
+  proxy,
+  deBounce,
+  throttle,
 };

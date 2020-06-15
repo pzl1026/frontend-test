@@ -1,4 +1,4 @@
-const { myNew } = require('./api.js');
+const { myNew, proxy, myInstanceof, deBounce } = require('./api.js');
 
 describe('myMap test', function () {
   it('should myMap', function () {
@@ -69,5 +69,35 @@ describe('myNew test', function () {
       return { x, y };
     }
     expect(myNew(a, 1, 2)).toEqual({ x: 1, y: 2 });
+  });
+});
+
+describe('proxy test', function () {
+  it('should proxy', function () {
+    function a(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+    let ac = new proxy(a);
+    let an = new a(1, 2);
+
+    console.log(ac, 'jj');
+    console.log(myInstanceof(an, a), 'gg');
+    // expect(proxy(a)).toEqual({ x: 1, y: 2 });
+  });
+});
+
+describe('proxy test', function () {
+  it('should proxy', function () {
+    function a(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+    let ac = new proxy(a);
+    let an = new a(1, 2);
+
+    console.log(ac, 'jj');
+    console.log(myInstanceof(an, a), 'gg');
+    // expect(proxy(a)).toEqual({ x: 1, y: 2 });
   });
 });
