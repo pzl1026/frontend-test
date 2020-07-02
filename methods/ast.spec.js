@@ -9,6 +9,8 @@ const parser = new Parser(handler, {
 
 describe('myReduce test', function () {
   it('should myReduce', function () {
-    parser.parseComplete('<div id="111"><span>19238123</span></div>');
+    parser.parseComplete(
+      '<div id="111" v-model="aa"><span>19238123</span></div>'
+    );
   });
 });
