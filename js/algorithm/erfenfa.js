@@ -1,3 +1,5 @@
+//二分法
+
 // 查找数组中元素之和为target的index
 function getIndex(arr, target) {
   let len = arr.length;
