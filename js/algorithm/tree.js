@@ -16,8 +16,8 @@ var levelOrder = function (root) {
       if (node.left) q.push(node.left);
       if (node.right) q.push(node.right);
     }
-    // console.log(q, ret, 'ret');
-    // console.log('//');
+    console.log(q, ret, 'ret');
+    console.log('//');
   }
 
   return ret;
@@ -33,6 +33,9 @@ console.log(
       val: 20,
       left: {
         val: 15,
+        left: {
+          val: 21,
+        },
       },
       right: {
         val: 7,
