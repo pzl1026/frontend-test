@@ -1,4 +1,6 @@
 import Routers from '../router';
+// import Mvvm from '../mvvm';
+import Mvvm from './vModel';
 
 let routers = new Routers();
 const content = document.querySelector('body');
@@ -16,4 +18,11 @@ ul.addEventListener('click', (e) => {
     e.preventDefault();
     routers.go(e.target.getAttribute('href'));
   }
+});
+
+var vm = new Mvvm({
+  el: 'app',
+  data: {
+    text: 'hello world',
+  },
 });

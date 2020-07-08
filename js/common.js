@@ -222,3 +222,19 @@ setTimeout(function () {
   // do something
   setTimeout(arguments.callee, 500);
 }, 500);
+
+/**
+ * 多维数组实现flat并且不重复排序
+ */
+function flatSortSet(arr) {
+  return Array.from(new Set(arr.flat(Infinity))).sort((a, b) => {
+    return a - b;
+  });
+}
+var arrFlat = [
+  [1, 2, 2],
+  [3, 4, 5, 5],
+  [6, 7, 8, 9, [11, 12, [12, 13, [14]]]],
+  10,
+];
+console.log(flatSortSet(arrFlat), 'flatSortSet');
