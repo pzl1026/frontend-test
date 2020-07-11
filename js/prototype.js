@@ -1,10 +1,18 @@
-function extend(subClass, superClass) {
-  subClass.prototype = superClass.prototype;
+// 方式一
+// function extend(subClass, superClass) {
+//   subClass.prototype = superClass.prototype;
 
-  subClass.superclass = superClass.prototype;
-  if (superClass.prototype.constructor == Object.prototype.constructor) {
-    superClass.prototype.constructor = superClass;
-  }
+//   subClass.superclass = superClass.prototype;
+//   if (superClass.prototype.constructor == Object.prototype.constructor) {
+//     superClass.prototype.constructor = superClass;
+//   }
+// }
+
+// 方式二
+function extend(proto) {
+  function F() {}
+  F.prototype = proto;
+  return new F();
 }
 
 function Father(name) {
@@ -18,7 +26,14 @@ function Son(name, age) {
   Father.call(this, name); //继承实例属性，第一次调用Father()
   this.age = age;
 }
-extend(Son, Father); //继承父类方法,此处并不会第二次调用Father()
+
+function inheritPrototype(Parent, Child) {
+  Child.prototype = Object.create(Parent.prototype); //修改
+  Child.prototype.constructor = Child;
+}
+
+inheritPrototype(Parent, Son);
+
 Son.prototype.sayAge = function () {
   console.log(this.age);
 };

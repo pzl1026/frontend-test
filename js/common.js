@@ -237,4 +237,5 @@ var arrFlat = [
   [6, 7, 8, 9, [11, 12, [12, 13, [14]]]],
   10,
 ];
-console.log(flatSortSet(arrFlat), 'flatSortSet');
+// console.log(flatSortSet(arrFlat), 'flatSortSet');
+console.log(Array.from(arrFlat.flat(Infinity)), 'Infinity');

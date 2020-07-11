@@ -123,3 +123,24 @@ var inorderTraversal4 = function (root) {
   return nums;
 };
 console.log(inorderTraversal4(root));
+
+// 验证是不是二叉搜索树
+// 中序便利判断
+var isValidBST = function (root) {
+  let stack = [];
+  let inorder = -Infinity;
+
+  while (stack.length || root !== null) {
+    while (root !== null) {
+      stack.push(root);
+      root = root.left;
+    }
+    root = stack.pop();
+    // 如果中序遍历得到的节点的值小于等于前一个 inorder，说明不是二叉搜索树
+    if (root.val <= inorder) return false;
+    inorder = root.val;
+    root = root.right;
+  }
+  return true;
+};
+console.log();

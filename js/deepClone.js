@@ -62,7 +62,9 @@ const clone = (parent) => {
 
     // 处理循环引用
     const index = parents.indexOf(parent);
+    console.log(index, parent);
     if (index != -1) {
+      console.log(parent, 'parent');
       // 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象
       return children[index];
     }
@@ -95,12 +97,55 @@ const oldObj = {
   e: {
     f: 'g',
   },
+  g: [1, 2, 3],
+  h: this.e,
 };
 
 oldObj.b = oldObj;
 
 const newObj = clone(oldObj);
-console.log(newObj.a, oldObj.a); // [Function: say] [Function: say]
-console.log(newObj.b, oldObj.b); // { a: [Function: say], c: /ab+c/i, d: person { name: 'Messi' }, b: [Circular] } { a: [Function: say], c: /ab+c/i, d: person { name: 'Messi' }, b: [Circular] }
-console.log(newObj.c, oldObj.c); // /ab+c/i /ab+c/i
-console.log(newObj.d.constructor, oldObj.d.constructor); // [Function: person] [Function: person]
+// console.log(newObj.a, oldObj.a); // [Function: say] [Function: say]
+// console.log(newObj.b, oldObj.b); // { a: [Function: say], c: /ab+c/i, d: person { name: 'Messi' }, b: [Circular] } { a: [Function: say], c: /ab+c/i, d: person { name: 'Messi' }, b: [Circular] }
+// console.log(newObj.c, oldObj.c); // /ab+c/i /ab+c/i
+// console.log(newObj.d.constructor, oldObj.d.constructor); // [Function: person] [Function: person]
+console.log(newObj, 'newobj');
+
+var son = { name: 'x' },
+  father = { name: 'y' };
+father.son = son;
+son.father = father;
+
+console.log(clone(father), 'father');
+
+function deepClone2(obj) {
+  let parents = [];
+  let children = [];
+
+  let clone = function (parent) {
+    let child;
+    if (isType(parent, 'Array')) {
+      child = [];
+    } else if (isType(parent, 'RegExp')) {
+      child = new RegExp(parent.source, getRegExp(parent));
+    } else if (isType(parent, 'Date')) {
+      child = new Date(parent.getTime());
+    } else {
+      let proto = parent.__proto__;
+      child = Object.create(proto);
+    }
+    let index = parents.indexOf(parent);
+    if (index > -1) {
+      return children[index];
+    }
+
+    parents.push(parent);
+    children.push(child);
+    for (let i in parent) {
+      child[i] = clone(parent[i]);
+    }
+    return child;
+  };
+  return clone(obj);
+}
+
+console.log(deepClone2(father), 'father2');

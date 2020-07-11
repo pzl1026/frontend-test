@@ -64,21 +64,23 @@ function compile(node, vm) {
 function defineReactive(vm, key, obj) {
   var dep = new Dep();
   console.log(vm.data, key, 'vm,ke');
-  Object.defineProperty(vm.data, key, {
-    enumerable: true,
-    configurable: true,
-    get: function () {
-      console.log(Dep.target, 99);
-      if (Dep.target) dep.addSub(Dep.target);
-      return obj;
-    },
-    set: function (newVal) {
-      console.log(newVal, ' newVal');
-      if (newVal == obj) return;
-      obj = newVal;
-      dep.notify();
-    },
-  });
+  vm.data,
+    key,
+    {
+      enumerable: true,
+      configurable: true,
+      get: function () {
+        console.log(Dep.target, 99);
+        if (Dep.target) dep.addSub(Dep.target);
+        return obj;
+      },
+      set: function (newVal) {
+        console.log(newVal, ' newVal');
+        if (newVal == obj) return;
+        obj = newVal;
+        dep.notify();
+      },
+    };
   console.log(dep, 'dep');
 }
 
