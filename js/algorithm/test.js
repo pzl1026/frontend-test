@@ -1,4 +1,4 @@
-const { prototype } = require('parcel-bundler');
+
 
 function quickSort(arr) {
   if (arr.length < 1) {
@@ -314,3 +314,23 @@ p11.then(
     // return err - 50;
   }
 );
+
+
+// 插入排序
+function insertSort(arr){
+  let  len = arr.length;
+  let preIndex, current;
+  for(let i = 1; i< len; i++) {
+    current = arr[i];
+    preIndex = i - 1;
+    while(preIndex >=0 && arr[preIndex] > current) {
+      arr[preIndex + 1] = arr[preIndex];
+      preIndex--;
+    }
+    arr[preIndex + 1] = current; 
+  }
+
+  return arr;
+}
+
+console.log(insertSort([3, 1, 2, 4, 0]), 'insertSort');

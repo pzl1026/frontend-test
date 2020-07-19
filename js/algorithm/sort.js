@@ -19,6 +19,7 @@ var quickSort = function (arr) {
   return quickSort(left).concat([pivot], quickSort(right));
 };
 
+// 冒泡排序
 function sort(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
@@ -32,5 +33,38 @@ function sort(arr) {
   return arr;
 }
 
+// 插入排序
+function insertionSort(arr) {
+    var len = arr.length;
+    var preIndex, current;
+    for (var i = 1; i < len; i++) {
+        preIndex = i - 1;
+        current = arr[i];
+        while (preIndex >= 0 && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex--;
+        }
+        arr[preIndex + 1] = current;
+    }
+    return arr;
+}
+
+function insertSort(arr){
+  let len = arr.length;
+  let preIndex, current;
+  for(let i = 1; i< len; i++) {
+    current = arr[i];
+    preIndex = i - 1;
+    while(preIndex >=0 && arr[preIndex] > current) {
+      arr[preIndex + 1] = arr[preIndex];
+      preIndex--;
+    }
+    arr[preIndex + 1] = current; 
+  }
+
+  return arr;
+}
+
 console.log(quickSort([3, 1, 2, 4, 0]));
 console.log(sort([3, 1, 2, 4, 0]));
+console.log(insertSort([3, 1, 2, 4, 0]));
