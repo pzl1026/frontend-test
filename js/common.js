@@ -116,7 +116,6 @@ console.log(p.name, 'iii');
 function myNew(fn, ...args) {
   let instance = Object.create(fn.prototype);
   let res = fn.apply(instance, args);
-  console.log(typeof res == 'object', 'uuu');
   return typeof res == 'object' ? res : instance;
 }
 
@@ -239,3 +238,10 @@ var arrFlat = [
 ];
 // console.log(flatSortSet(arrFlat), 'flatSortSet');
 console.log(Array.from(arrFlat.flat(Infinity)), 'Infinity');
+
+const flatten = (array) =>
+  array.reduce(
+    (acc, cur) =>
+      Array.isArray(cur) ? [...acc, ...flatten(cur)] : [...acc, cur],
+    []
+  );

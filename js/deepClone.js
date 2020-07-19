@@ -68,6 +68,7 @@ const clone = (parent) => {
       // 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象
       return children[index];
     }
+    console.log(child, 'child');
     parents.push(parent);
     children.push(child);
     for (let i in parent) {
@@ -104,11 +105,12 @@ const oldObj = {
 oldObj.b = oldObj;
 
 const newObj = clone(oldObj);
+newObj.g.push(4);
 // console.log(newObj.a, oldObj.a); // [Function: say] [Function: say]
 // console.log(newObj.b, oldObj.b); // { a: [Function: say], c: /ab+c/i, d: person { name: 'Messi' }, b: [Circular] } { a: [Function: say], c: /ab+c/i, d: person { name: 'Messi' }, b: [Circular] }
 // console.log(newObj.c, oldObj.c); // /ab+c/i /ab+c/i
 // console.log(newObj.d.constructor, oldObj.d.constructor); // [Function: person] [Function: person]
-console.log(newObj, 'newobj');
+console.log(oldObj, newObj, 'newobj22');
 
 var son = { name: 'x' },
   father = { name: 'y' };

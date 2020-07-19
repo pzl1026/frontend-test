@@ -17,6 +17,24 @@
         <a href="/yellow">yellow</a>
       </li>
     </ul>
+    <style>
+      .flex {
+        display: flex;
+        height: 100px;
+      }
+      .flex1 {
+        width: 100px;
+        background-color: #f00;
+      }
+      .flex2 {
+        flex: 1;
+        background-color: #00f;
+      }
+    </style>
+    <div class="flex">
+      <div class="flex1"></div>
+      <div class="flex2"></div>
+    </div>
     <div id="app">
       <input type="text" v-model="text" />
       {{ text }}
