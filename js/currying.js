@@ -35,9 +35,22 @@ const curry2 = (fn) => {
 
   return judge;
 };
-
 const plus = curry2((a, b, c, d, e) => a + b + c + d + e);
 console.log(plus(1)(2, 3)(4)(5));
+
+// 使用toString自动调用
+function add4(x) {
+  var sum = x;
+  var tmp = function (y) {
+    sum = sum + y;
+    return tmp;
+  };
+  tmp.toString = function () {
+    return sum;
+  };
+  return tmp;
+}
+console.log(add4(1)(2), 'add4');
 
 // 正则
 function currying2(fn) {

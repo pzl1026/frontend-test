@@ -161,6 +161,7 @@ function Ins() {
 let ins = new Ins();
 console.log(ins, 'sss');
 console.log(myInstanceof(ins, Ins2), 'ins');
+console.log(myInstanceof({}, Object), 'object');
 
 /**
  * 防抖
@@ -214,7 +215,7 @@ const flatten = function (arr) {
 };
 let arr = [1, 2, [3, 4, 5, [6, 7], 8], 9, 10, [11, [12, 13]]];
 
-console.log(flatten(arr));
+console.log(flatten(arr), 'flatten22');
 
 // 可避免setInterval因执行时间导致的间隔执行时间不一致
 setTimeout(function () {
@@ -239,7 +240,7 @@ var arrFlat = [
 // console.log(flatSortSet(arrFlat), 'flatSortSet');
 console.log(Array.from(arrFlat.flat(Infinity)), 'Infinity');
 
-const flatten = (array) =>
+const flatten2 = (array) =>
   array.reduce(
     (acc, cur) =>
       Array.isArray(cur) ? [...acc, ...flatten(cur)] : [...acc, cur],
