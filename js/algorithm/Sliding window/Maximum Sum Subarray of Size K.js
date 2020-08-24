@@ -1,1 +1,1 @@
-// leetcode 325
+// leetcode 325  (easy)

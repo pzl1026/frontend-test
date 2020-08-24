@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./center.css" />
+    <link rel="stylesheet" href="./bfc.css" />
+  </head>
+  <body>
+    <!-- 垂直剧中 start -->
+    <!-- 方法1 start-->
+    <div class="content-center">
+      <div class="center-body"></div>
+    </div>
+    <!-- 方法1 end -->
+    <p style="height: 10px;"></p>
+    <!-- 方法2 start-->
+    <div class="content-center2">
+      <div class="center-body2">
+        <div class="center-body2-1"></div>
+      </div>
+    </div>
+    <!-- 方法2 end -->
+    <p style="height: 10px;"></p>
+    <!-- 方法3 start -->
+    <div class="content-center3">
+      <div class="center-body3"></div>
+    </div>
+    <!-- 方法3 end -->
+    <!-- 方法4 line-heigt方式， 略 -->
+    <p style="height: 10px;"></p>
+    <!-- 方法5 start -->
+    <div class="content-center5">
+      <div class="center-body5"></div>
+    </div>
+    <!-- 方法5 end -->
+    <!-- 垂直剧中 end -->
+    <p style="height: 10px;"></p>
+    <p style="height: 10px;"></p>
+    <!-- BFC解决的问题 -->
+    <!-- 解决的高度塌陷的问题，float -->
+    <div class="bfc1">
+      <div class="bfc1-child1"></div>
+      <div class="bfc1-child2"></div>
+    </div>
+    <!-- end -->
+    <!-- 解决的外边距重叠问题 -->
+    <div class="bfc2">
+      <div class="bfc2-child1"></div>
+      <div class="bfc2-child2"></div>
+    </div>
+    <!-- end -->
+    <!-- 自适应布局 -->
+    <div class="bfc3">
+      <div class="bfc3-child1"></div>
+      <div class="bfc3-child2"></div>
+    </div>
+    <!-- end -->
+    <!-- BFC解决的问题 -->
+  </body>
+</html>

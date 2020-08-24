@@ -1,0 +1,58 @@
+.bfc1 {
+  overflow: hidden;
+}
+
+.bfc1-child1 {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #f00;
+}
+
+.bfc1-child2 {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #f00;
+}
+/* ******************* */
+
+.bfc2 {
+  overflow: hidden;
+}
+
+.bfc2-child1 {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #f00;
+  margin-right: 10px;
+  display: flow-root;
+}
+
+.bfc2-child2 {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background: #f00;
+  margin-left: 10px;
+}
+/* ******************* */
+
+.bfc3 {
+}
+
+.bfc3-child1 {
+  width: 100px;
+  height: 100px;
+  background: green;
+  float: left;
+}
+
+.bfc3-child2 {
+  height: 100px;
+  background: pink;
+  /*添加overflow:hidden，触发元素BFC*/
+  overflow: hidden;
+}
+/* ******************* */
