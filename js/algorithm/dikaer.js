@@ -2,14 +2,14 @@
 function cartesion([...arys]) {
   if (arys.length == 0) return [];
 
-  if (arys.length == 1) {
-    let newArr = [];
+  // if (arys.length == 1) {
+  //   let newArr = [];
 
-    arys[0].forEach((item) => {
-      newArr.push([item]);
-    });
-    return newArr;
-  }
+  //   arys[0].forEach((item) => {
+  //     newArr.push([item]);
+  //   });
+  //   return newArr;
+  // }
 
   return arys.reduce((prev, item) => {
     let temp = [];
@@ -26,3 +26,4 @@ function cartesion([...arys]) {
 }
 
 console.log(cartesion([[1], [2, 3]]));
+console.log(cartesion([[2, 3]]));

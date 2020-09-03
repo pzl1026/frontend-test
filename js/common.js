@@ -227,7 +227,7 @@ setTimeout(function () {
  * 多维数组实现flat并且不重复排序
  */
 function flatSortSet(arr) {
-  return Array.from(new Set(arr.flat(Infinity))).sort((a, b) => {
+  return Array.from(new Set(arr.flat())).sort((a, b) => {
     return a - b;
   });
 }
